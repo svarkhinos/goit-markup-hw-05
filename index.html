@@ -45,7 +45,7 @@
         <section class="hero overlay">
                 <div class="hero-container">
                     <h1 class="hero-title">Эффективные решения для вашего бизнеса</h1>
-                    <button class="button">Заказать услугу</button>
+                    <button data-modal-open class="button">Заказать услугу</button>
                 </div>
         </section>
         <!--Секция2 Приемущества-->
@@ -106,14 +106,23 @@
                         <img src="./images/img1.jpg"
                         alt="Человек набирает код на клавиатуре с планшета"
                         width="370"/>
+                        <div class="work-description">
+                            <h3 class="benefits-item-title work-description-text">Десктопные приложения</h3>
+                        </div>
                     </li>
                     <li class="work-item"><img src="./images/img2.jpg"
                         alt="Человек работает за ноутбуком и смотрит в телефон"
                         width="370"/>
+                        <div class="work-description">
+                            <h3 class="benefits-item-title work-description-text">Мобильные приложения</h3>
+                        </div>
                     </li>
                     <li class="work-item"><img src="./images/img3.jpg"
                         alt="Человек рассматривает в планшете цветовую палитру"
                         width="370"/>
+                        <div class="work-description">
+                            <h3 class="benefits-item-title work-description-text">Дизайнерские решения</h3>
+                        </div>
                     </li>
                 </ul>
             </div>
@@ -341,7 +350,7 @@
                             </address>
                     </li>
                     <li class="footer-item">
-                            <p class="benefits-item-title">присоединяйтесь</p>
+                            <p class="benefits-item-title footer-text">присоединяйтесь</p>
                             <ul class="footer-actions actions">
                                 <li class="footer-actions-item actions-item">
                                     <a class=" footer-link action-link" href="">
@@ -377,6 +386,21 @@
                 </ul>
             </div>
         </footer>
+
+        <!--Модальное окно-->
+
+        <div data-modal class="backdrop is-hidden">
+            <div class="modal">
+                <button data-modal-close class="close">
+                    <svg class="icon-close">
+                        <use href="./images/symbol-defs.svg#icon-close"></use>
+                    </svg>
+                </button>
+
+            </div>
+        </div>
+
+        <script src="./js/modal.js"></script>
     </body>
 </html>
 

@@ -54,11 +54,6 @@ img {
 
 /* навигация по сайту*/
 
-.page-header {
-  padding-top: 13px;
-  padding-bottom: 12px;
-}
-
 .main-nav {
   display: flex;
   align-items: center;
@@ -102,11 +97,39 @@ img {
 
 .site-nav .link {
   display: block;
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding-top: 32px;
+  padding-bottom: 32px;
+  position: relative;
 
   color: var(--title-text-color);
+
+  transition-property: color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
+
+.site-nav .link::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 5px;
+  border-radius: 2px;
+  background-color: var(--accent-color);
+  opacity: 0;
+
+  transition-property: opacity;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.site-nav .current::after,
+.site-nav .link:hover::after {
+  opacity: 1;
+}
+
 .site-nav .link:hover,
 .site-nav .link:focus {
   color: var(--accent-color);
@@ -121,6 +144,10 @@ img {
   padding-bottom: 20px;
 
   color: var(--primary-text-color);
+
+  transition-property: color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .contacts:hover,
 .contacts:focus {
@@ -303,10 +330,26 @@ img {
 }
 .work-item {
   width: 370px;
+  position: relative;
 }
 .work-list .work-item:not(:last-child) {
   margin-right: 30px;
 }
+
+.work-description {
+  padding: 27px 10px;
+  width: 100%;
+  height: 70px;
+  position: absolute;
+  bottom: 0;
+  background: rgba(47, 48, 58, 0.8);
+}
+.work-description-text {
+  margin: 0;
+  text-align: center;
+  color: var(--primary-white-color);
+}
+
 /* Наша команда */
 .teem {
   padding-top: 94px;
@@ -375,6 +418,10 @@ img {
   padding: 12px;
   border-radius: 50%;
   color: var(--icons-color);
+
+  transition-property: color, background-color;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .action-link:hover,
@@ -410,6 +457,10 @@ img {
   border: 1px solid var(--icons-color);
   border-radius: 4px;
   color: var(--icons-color);
+
+  transition-property: color, border;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 .client-list {
   display: flex;
@@ -463,7 +514,7 @@ address {
 .footer-list .footer-item:not(:last-child) {
   margin-right: 70px;
 }
-.benefits-item-title {
+.footer-text {
   margin-top: 13px;
   margin-bottom: 20px;
 
@@ -520,6 +571,10 @@ address {
   border-radius: 4px;
   color: var(--title-text-color);
   background-color: var(--light-background-color);
+
+  transition-property: color, background-color, box-shadow;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .filter-list .filter-item:not(:last-child) {
@@ -530,6 +585,36 @@ address {
 .filter-button:focus {
   color: var(--primary-white-color);
   background-color: var(--accent-color);
+  box-shadow: 0px 3px 1px rgba(0, 0, 0, 0.1), 0px 1px 2px rgba(0, 0, 0, 0.08),
+    0px 2px 2px rgba(0, 0, 0, 0.12);
+}
+
+.portfolio-photo {
+  position: relative;
+  overflow: hidden;
+}
+
+.portfolio-overlay {
+  padding: 63px 24px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(33, 150, 243, 0.9);
+  transform: translateY(100%);
+
+  transition-property: transform;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.portfolio-overlay-text {
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.6;
+  letter-spacing: 0.03em;
+  color: var(--primary-white-color);
 }
 
 .portfolio-item-title {
@@ -557,7 +642,16 @@ address {
 
 .portfolio-link {
   display: block;
+
+  transition-property: box-shadow;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
 }
+.portfolio-item .portfolio-link:hover .portfolio-overlay,
+.portfolio-item .portfolio-link:focus .portfolio-overlay {
+  transform: translateY(0);
+}
+
 .portfolio-item .portfolio-link:hover,
 .portfolio-item .portfolio-link:focus {
   box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.12), 0px 4px 4px rgba(0, 0, 0, 0.06),
@@ -578,4 +672,62 @@ address {
 
   margin-top: var(--portfolio-list-gap);
   margin-left: var(--portfolio-list-gap);
+}
+
+/* Модальное окно*/
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.2);
+
+  opacity: 1;
+  transition-property: opacity;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.backdrop.is-hidden {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.backdrop.is-hidden .modal {
+  transform: translate(-50%, -50%) scale(0.9);
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+
+  width: 528px;
+  height: 581px;
+  padding: 8px;
+  background-color: var(--primary-white-color);
+
+  transform: translate(-50%, -50%) scale(1);
+  transition-property: transform;
+  transition-duration: 250ms;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.close {
+  display: flex;
+  padding: 0;
+  margin-left: auto;
+
+  cursor: pointer;
+  border: none;
+  outline: transparent;
+
+  background-color: #ffffff;
+}
+.icon-close {
+  width: 30px;
+  height: 30px;
 }
